@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Banking</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3366FF',secondary:'#00C6AE'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fc;
+        }
+        .chart-container {
+            height: 180px;
+            width: 100%;
+        }
+        .transaction-item:not(:last-child) {
+            border-bottom: 1px solid #f0f0f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Nav Bar -->
+    <div class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="flex items-center">
+                <span class="font-['Pacifico'] text-primary text-xl">logo</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 flex items-center justify-center cursor-pointer">
+                    <i class="ri-notification-3-line ri-lg"></i>
+                </div>
+                <div class="w-8 h-8 flex items-center justify-center cursor-pointer">
+                    <i class="ri-settings-3-line ri-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="pt-16 pb-20 px-4">
+        <!-- Biometric Auth Indicator -->
+        <div class="flex items-center justify-between mb-4 mt-2">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20adult%2C%20high%20quality%20portrait%2C%20natural%20lighting%2C%20neutral%20background%2C%20professional%20attire&width=100&height=100&seq=1&orientation=squarish" 
+                         alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Welcome back</p>
+                    <p class="font-medium">Michael Anderson</p>
+                </div>
+            </div>
+            <div class="flex items-center bg-gray-100 rounded-full px-3 py-1">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-shield-check-line text-primary"></i>
+                </div>
+                <span class="text-xs">Secured</span>
+            </div>
+        </div>
+
+        <!-- Account Balance Card -->
+        <div class="bg-primary rounded-xl p-5 text-white mb-6 relative overflow-hidden">
+            <div class="absolute right-0 bottom-0 opacity-10">
+                <i class="ri-bank-card-line ri-10x"></i>
+            </div>
+            <div class="mb-1">
+                <p class="text-white/80 text-sm">Total Balance</p>
+                <h1 class="text-3xl font-semibold mt-1">$24,562.80</h1>
+            </div>
+            <div class="flex justify-between mt-4">
+                <div>
+                    <p class="text-white/70 text-xs">Income</p>
+                    <p class="font-medium">+$4,890.00</p>
+                </div>
+                <div>
+                    <p class="text-white/70 text-xs">Expenses</p>
+                    <p class="font-medium">-$2,145.32</p>
+                </div>
+                <div class="bg-white/20 rounded-full px-3 py-1 flex items-center cursor-pointer">
+                    <span class="text-sm mr-1">Details</span>
+                    <i class="ri-arrow-right-s-line"></i>
+                </div>
+            </div>
+            <div class="mt-4 text-xs text-white/70">
+                Last updated: July 1, 2025 • 10:23 AM
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mb-6">
+            <h2 class="text-lg font-medium mb-3">Quick Actions</h2>
+            <div class="grid grid-cols-4 gap-3">
+                <div class="flex flex-col items-center cursor-pointer">
+                    <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                        <i class="ri-send-plane-fill ri-lg text-primary"></i>
+                    </div>
+                    <span class="text-xs text-center">Send</span>
+                </div>
+                <div class="flex flex-col items-center cursor-pointer">
+                    <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                        <i class="ri-bank-card-fill ri-lg text-green-600"></i>
+                    </div>
+                    <span class="text-xs text-center">Pay</span>
+                </div>
+                <div class="flex flex-col items-center cursor-pointer">
+                    <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                        <i class="ri-smartphone-fill ri-lg text-purple-600"></i>
+                    </div>
+                    <span class="text-xs text-center">Top-up</span>
+                </div>
+                <div class="flex flex-col items-center cursor-pointer">
+                    <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                        <i class="ri-more-fill ri-lg text-orange-600"></i>
+                    </div>
+                    <span class="text-xs text-center">More</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Insights -->
+        <div class="bg-white rounded-xl p-4 mb-6 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium">Monthly Overview</h2>
+                <div class="text-xs text-gray-500 bg-gray-100 rounded-full px-3 py-1">
+                    July 2025
+                </div>
+            </div>
+            <div class="chart-container" id="expenseChart"></div>
+            
+            <div class="grid grid-cols-3 gap-3 mt-4">
+                <div class="bg-gray-50 rounded-lg p-2">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                        <i class="ri-home-fill text-blue-600"></i>
+                    </div>
+                    <p class="text-xs text-gray-500">Housing</p>
+                    <p class="font-medium">$1,240</p>
+                    <p class="text-xs text-gray-500">32%</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-2">
+                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                        <i class="ri-restaurant-fill text-green-600"></i>
+                    </div>
+                    <p class="text-xs text-gray-500">Food</p>
+                    <p class="font-medium">$845</p>
+                    <p class="text-xs text-gray-500">22%</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                        <i class="ri-car-fill text-purple-600"></i>
+                    </div>
+                    <p class="text-xs text-gray-500">Transport</p>
+                    <p class="font-medium">$560</p>
+                    <p class="text-xs text-gray-500">14%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-medium">Recent Transactions</h2>
+                <span class="text-primary text-sm cursor-pointer">See All</span>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <!-- Transaction Item -->
+                <div class="transaction-item p-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                            <i class="ri-shopping-bag-fill text-red-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Whole Foods Market</p>
+                            <p class="text-xs text-gray-500">July 1, 2025 • 9:45 AM</p>
+                        </div>
+                    </div>
+                    <p class="font-medium text-red-500">-$86.24</p>
+                </div>
+                
+                <!-- Transaction Item -->
+                <div class="transaction-item p-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="ri-building-fill text-blue-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Salary Deposit</p>
+                            <p class="text-xs text-gray-500">June 30, 2025 • 8:00 AM</p>
+                        </div>
+                    </div>
+                    <p class="font-medium text-green-500">+$3,450.00</p>
+                </div>
+                
+                <!-- Transaction Item -->
+                <div class="transaction-item p-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="ri-netflix-fill text-purple-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Netflix Subscription</p>
+                            <p class="text-xs text-gray-500">June 28, 2025 • 11:32 PM</p>
+                        </div>
+                    </div>
+                    <p class="font-medium text-red-500">-$14.99</p>
+                </div>
+                
+                <!-- Transaction Item -->
+                <div class="transaction-item p-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                            <i class="ri-taxi-fill text-yellow-500"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Uber Ride</p>
+                            <p class="text-xs text-gray-500">June 27, 2025 • 7:15 PM</p>
+                        </div>
+                    </div>
+                    <p class="font-medium text-red-500">-$24.50</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Tips -->
+        <div class="bg-white rounded-xl p-4 shadow-sm mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-medium">Financial Insights</h2>
+                <div class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">
+                    <i class="ri-refresh-line"></i>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 rounded-lg p-3 mb-3 border-l-4 border-primary">
+                <div class="flex items-start">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <i class="ri-lightbulb-fill text-primary"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Spending Alert</p>
+                        <p class="text-sm text-gray-600">Your dining expenses are 15% higher than last month. Consider setting a budget.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                <div class="flex items-start">
+                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-1">
+                        <i class="ri-funds-box-fill text-green-500"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Savings Opportunity</p>
+                        <p class="text-sm text-gray-600">You could save $320 monthly by refinancing your mortgage at current rates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+        <div class="grid grid-cols-4 h-16">
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-home-5-fill ri-lg text-primary"></i>
+                </div>
+                <span class="text-xs mt-1 text-primary">Home</span>
+            </div>
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-exchange-dollar-line ri-lg text-gray-400"></i>
+                </div>
+                <span class="text-xs mt-1 text-gray-500">Payments</span>
+            </div>
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-bank-card-line ri-lg text-gray-400"></i>
+                </div>
+                <span class="text-xs mt-1 text-gray-500">Cards</span>
+            </div>
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-user-3-line ri-lg text-gray-400"></i>
+                </div>
+                <span class="text-xs mt-1 text-gray-500">Profile</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-20 right-4 w-14 h-14 rounded-full bg-primary shadow-lg flex items-center justify-center cursor-pointer">
+        <i class="ri-add-fill ri-xl text-white"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    
+    <script id="chart-initialization">
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartDom = document.getElementById('expenseChart');
+            const myChart = echarts.init(chartDom);
+            
+            const option = {
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{b}: ${c}'
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    top: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {
+                        fontSize: 10
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: '${value}',
+                        fontSize: 10
+                    }
+                },
+                series: [
+                    {
+                        name: 'Expenses',
+                        type: 'bar',
+                        data: [780, 950, 620, 840],
+                        itemStyle: {
+                            color: '#3366FF'
+                        },
+                        barWidth: '40%',
+                        emphasis: {
+                            itemStyle: {
+                                color: '#2952cc'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Budget',
+                        type: 'line',
+                        data: [800, 800, 800, 800],
+                        symbol: 'none',
+                        lineStyle: {
+                            color: '#00C6AE',
+                            width: 2,
+                            type: 'dashed'
+                        }
+                    }
+                ]
+            };
+            
+            myChart.setOption(option);
+            
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        });
+    </script>
+</body>
+</html>
